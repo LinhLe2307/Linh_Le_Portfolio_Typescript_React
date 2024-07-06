@@ -1,5 +1,13 @@
+import EmailIcon from '@mui/icons-material/Email';
+import PhoneIphoneIcon from '@mui/icons-material/PhoneIphone';
+import PlaceIcon from '@mui/icons-material/Place';
+import WebAssetIcon from '@mui/icons-material/WebAsset';
+import LinkedInIcon from '@mui/icons-material/LinkedIn';
+import GitHubIcon from '@mui/icons-material/GitHub';
+import IosShareIcon from '@mui/icons-material/IosShare';
 import "./Resume.css"
-import { workExperience, personalProject } from "../../utils/resumeLists"
+import { workExperience, personalProject, educationList, summaryList, technicalLists } from "../../utils/resumeLists"
+import { Link } from 'react-router-dom';
 
 const Resume = () => {
   return (
@@ -7,146 +15,155 @@ const Resume = () => {
       <div className="container">
 
         <div className="section-title">
-          <h2>Resume</h2>
-          <p>Check My Resume</p>
+          <div className="section-column">
+            <h1>Linh Le</h1>
+            <h4>Full-stack Web Developer</h4>
+            <p>
+              Graduated as a driven full-stack web developer from Helsinki Business College 
+              with hands-on experience as a full-stack web developer at Druid Oy. 
+              My expertise including JavaScript, TypeScript, Python, PostgreSQL, React and Nodejs. 
+              I am currently in search of a dynamic role as a Full-stack Developer, 
+              where I can leverage my skills to contribute to and create innovative website solutions.
+            </p>
+          </div>
+          <div className="section-column">
+            fdg
+            <img />
+          </div>
+          <div className="section-column media">
+            <p>lemylinh237@gmail.com <span><i><EmailIcon /></i></span></p>
+            <p>+358 46 966 4393 <span><i><PhoneIphoneIcon /></i></span></p>
+            <p>Vantaa, Finland <span><i><PlaceIcon /></i></span></p>
+            <p>https://linh-my-le.netlify.app/ <span><i><WebAssetIcon /></i></span></p>
+            <p>https://www.linkedin.com/in/linh-le-96baaa154/ <span><i><LinkedInIcon /></i></span></p>
+            <p>https://github.com/LinhLe2307 <span><i>< GitHubIcon /></i></span></p>
+          </div>
         </div>
 
-        <div className="row">
-          <div className="col-lg-6">
-            <h3 className="resume-title">Profile</h3>
-            <div className="resume-item pb-0">
-              <ul>
-                <li>lemylinh237@gmail.com</li>
-                <li>+358 46 966 4393</li>
-                <li>https://www.linkedin.com/in/linh-le-96baaa154/</li>
-                <li>https://linh-my-le.netlify.app/</li>
-                <li>https://github.com/LinhLe2307</li>
-              </ul>
+        <div className='row'>
+          <div className="col-lg-6 pr-lg-3">
+            <div>
+              <h3 className="resume-title">WORK EXPERIENCE</h3>
+              {
+                workExperience.map(experience => (
+                  <div className="resume-item" key={experience.company}>
+                    <div>
+                      <h4 className='resume-subtitle'>{experience.title}</h4>
+                      <h4 className='resume-company'>{experience.company}</h4>
+                      <p className='resume-year resume-font resume-color'><span>{experience.year}</span><span>{experience.location}</span></p>
+                      <p className='resume-font'>{experience.companyDescription}</p>
+                      <p>
+                          <p className='resume-font resume-color'>Achievements/Tasks</p>
+                        <ul>
+                          {
+                            experience.tasks && 
+                            experience.tasks.map(task => <li key={task}>{task}</li>)
+                          }
+                        </ul>
+                      </p>
+                    </div>
+                    
+                  </div>
+                ))
+              }
             </div>
-
-            <h3 className="resume-title">Education</h3>
-            <div className="resume-item">
-              <h4>Helsinki Business College</h4>
-              <h5>January 2022 - June 2023</h5>
-              <p><em>Helsinki, Finland</em></p>
-              <p>Certificates:</p>
-              <ul>
-                <li>Getting Started with DevOps on AWS - AWS Skill Builder</li>
-                <li>Amazon Elastic Compute Cloud Certificate (AWS EC2) - AWS Skill Builder</li>
-                <li>Introduction to Amazon Elastic Compute Cloud (EC2) - AWS Skill Builder</li>
-              </ul>
-            </div>
-            <div className="resume-item">
-              <h4>Laurea University of Applied Sciences</h4>
-              <h5>January 2018 - July 2021</h5>
-              <p><em>Espoo, Finland</em></p>
-              <p><ul>
-                <li>Search Engine Optimization (SEO)</li>  
-                <li>Google Analytics</li>  
-                <li>Content Marketing</li>  
-              </ul></p>
-            </div>
-
-            <h3 className="resume-title">Skills</h3>
-            <div className="resume-item">
-              <h4>Technical Skills</h4>
-              <p>
-                <ul>
-                  <li>JavaScript, TypeScript, PHP, Python</li>
-                  <li>React, Redux, Redux Saga</li>
-                  <li>NodeJs / ExpressJs, AWS, Docker, GraphQL</li>
-                  <li>PostgreSQL, MongoDB, Vitest Unit Testing</li>
-                  <li>Symfony, Drupal</li>
-                  <li>RESTful APIs, Git</li>
-                  <li>Jira, Confluence, Slack, Figma</li>
-                </ul>
-              </p>
-            </div>
-            <div className="resume-item">
-              <h4>Soft Skills</h4>
-              <p>
-                <ul>
-                  <li>Responsibility and trusthworthy</li>
-                  <li>Ability to learn</li>
-                  <li>Problem solving</li>
-                  <li>PostgreSQL, MongoDB, Vitest Unit Testing</li>
-                  <li>Cooperation skills</li>
-                  <li>Teamwork and individual work</li>
-                </ul>
-              </p>
-            </div>
-            <div className="resume-item">
-              <h4>Language Skills</h4>
-              <p>
-                <ul>
-                  <li>Vietnamese: Native</li>
-                  <li>English: Intermediate</li>
-                  <li>Finnish: Elementary</li>
-                </ul>
-              </p>
-            </div>
-            <h3 className="resume-title">References</h3>
-            <div className="resume-item">
-              <h4>Laurie Limsam</h4>
-              <p>
-                <ul>
-                  <li>Full-stack Developer at Druid Oy</li>
-                  <li>Email: laurie.limsam@druid.fi</li>
-                  <li>Phone: +358 41 314 1556</li>
-                </ul>
-              </p>
-            </div>
-            <div className="resume-item">
-              <h4>Toni Nissinen</h4>
-              <p>
-                <ul>
-                  <li>Drupal Developer at Druid Oy</li>
-                  <li>Email: toni.nissinen@druid.fi</li>
-                  <li>Phone: +358 40 509 7130</li>
-                </ul>
-              </p>
+            
+            <div>
+              <h3 className="resume-title">EDUCATION</h3>
+              {
+                educationList.map(education => (
+                  <div className="resume-item">
+                    <div>
+                      <h4 className='resume-subtitle'>{education.title}</h4>
+                      <h4 className='resume-company'>{education.school}</h4>
+                      <p className='resume-year resume-font resume-color'><span>{education.year}</span><span>{education.location}</span></p>
+                      <p className='resume-font resume-color'>{education.certificates ? 'Certificates:' : 'Courses:'}</p>
+                      <ul>
+                        {
+                          education.certificates ? education.certificates.map(cer =>
+                            <li key={cer}>{cer}</li>)
+                            : education.courses.map(course =>
+                              <li key={course}>{course}</li>)
+                        }
+                      </ul>
+                    </div>
+                  </div>
+                ))
+              }
             </div>
           </div>
-          <div className="col-lg-6">
-            <h3 className="resume-title">Work Expeience</h3>
-            {
-              workExperience.map(experience => (
-                <div className="resume-item" key={experience.company}>
-                  <h4>{experience.title}</h4>
-                  <p><em>{experience.company}</em></p>
-                  <h5>{experience.year}</h5>
-                  <p>
-                  <ul>
-                    <li>{experience.descriptionOne}</li>
-                    {
-                      experience.descriptionTwo && 
-                      <li>{experience?.descriptionTwo}</li>
-                    }
-                  </ul>
-                  </p>
-                </div>
-              ))
-            }
-            <h3 className="resume-title">Work Expeience</h3>
-            {
-              personalProject.map(project => (
-                <div className="resume-item" key={project.title}>
-                  <h5>{project.year}</h5>
-                  <p><em>{project.title}</em></p>
-                  {
-                    project.url && <p>{project.url}</p>
-                  }
-                  <p>{project.shortDescription}</p>
-                  <p>
-                  <ul>
-                    {
-                      project.description.map(des => <li>{des}</li>)
-                    }
-                  </ul>
-                  </p>
-                </div>
-              ))
-            }
+          <div className="col-lg-6 pr-lg-3">
+            {/* Technical Skills */}
+            <div>
+              <h3 className="resume-title">TECHNICAL SKILLS</h3>
+              <div className="resume-item">
+                <ul className='resume-item-list'>
+                {
+                  technicalLists.map(skill => <li key={skill}>{skill}</li>)
+                }
+                </ul>
+              </div>
+            </div>
+
+            {/* Personal projects and activities  */}
+            <div>
+              <h3 className="resume-title">PERSONAL PROJECTS AND ACTIVITIES</h3>
+              {
+                personalProject.map(project => (
+                  <div className="resume-item">
+                    <div>
+                      <h5 className='resume-company'>{project.title} 
+                        {
+                          project.url.length > 1 && <Link to={project.url} target="_blank"><span><i><IosShareIcon /></i></span></Link>
+                        }
+                      </h5>
+                      <p className='resume-font'>{project.shortDescription}</p>
+                      <ul>
+                        {
+                          project.description && 
+                          project.description.map(des =>
+                            <li key={des}>{des}</li>)
+                            }
+                      </ul>
+                    </div>
+                  </div>
+                ))
+              }
+            </div>
+
+            {/* Languages */}
+            <div>
+              <h3 className="resume-title">LANGUAGES</h3>
+              <div className="resume-item">
+                <ul className='resume-language'>
+                  <li><span>Vietnamese</span>
+                    <span className='resume-font resume-color'>
+                      Native or Bilingual Proficiency
+                    </span>
+                  </li>
+                  <li><span>English</span><span className='resume-font resume-color'>
+                    Full Professional Proficiency
+                  </span></li>
+                  <li><span>Finnish</span><span className='resume-font resume-color'>
+                    Elementary Proficiency
+                  </span></li>
+                </ul>
+              </div>
+            </div>
+
+            {/* Soft skills  */}
+            <div>
+              <h3 className="resume-title">SOFT SKILLS</h3>
+              <div className="resume-item">
+                <ul className='resume-item-list'>
+                  <li>Responsibility and trustworthy</li>
+                  <li>Ability to learn</li>
+                  <li>Problem solving</li>
+                  <li>Cooperation skills</li>
+                  <li>Team work and individual work</li>
+                </ul>
+              </div>
+            </div>
           </div>
         </div>
 
