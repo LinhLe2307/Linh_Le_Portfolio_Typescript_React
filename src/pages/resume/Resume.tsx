@@ -1,17 +1,13 @@
-import EmailIcon from '@mui/icons-material/Email';
-import PhoneIphoneIcon from '@mui/icons-material/PhoneIphone';
-import PlaceIcon from '@mui/icons-material/Place';
-import WebAssetIcon from '@mui/icons-material/WebAsset';
-import LinkedInIcon from '@mui/icons-material/LinkedIn';
-import GitHubIcon from '@mui/icons-material/GitHub';
 import IosShareIcon from '@mui/icons-material/IosShare';
-import "./Resume.css"
-import { workExperience, personalProject, educationList, summaryList, technicalLists } from "../../utils/resumeLists"
 import { Link } from 'react-router-dom';
+import avatar from "../../assets/img/Avatar.jpg";
+import { educationList, personalProject, technicalLists, workExperience } from "../../utils/resumeLists";
+import "./Resume.css";
 
 const Resume = () => {
   return (
     <section id="resume" className="resume">
+      <button>Download CV</button>
       <div className="container">
 
         <div className="section-title">
@@ -26,22 +22,27 @@ const Resume = () => {
               where I can leverage my skills to contribute to and create innovative website solutions.
             </p>
           </div>
-          <div className="section-column">
-            fdg
-            <img />
+          <div className="section-column section-img">
+            <img src={avatar} width="200" height="200"/>
           </div>
-          <div className="section-column media">
-            <p>lemylinh237@gmail.com <span><i><EmailIcon /></i></span></p>
-            <p>+358 46 966 4393 <span><i><PhoneIphoneIcon /></i></span></p>
-            <p>Vantaa, Finland <span><i><PlaceIcon /></i></span></p>
-            <p>https://linh-my-le.netlify.app/ <span><i><WebAssetIcon /></i></span></p>
-            <p>https://www.linkedin.com/in/linh-le-96baaa154/ <span><i><LinkedInIcon /></i></span></p>
-            <p>https://github.com/LinhLe2307 <span><i>< GitHubIcon /></i></span></p>
+          <div className="section-column section-media">
+            <p>lemylinh237@gmail.com <span><i className="bi bi-envelope-fill" style={{ width: "3rem", height: "3rem" }}></i></span></p>
+            <p>+358 46 966 4393 <span><i className="bi bi-phone-fill"></i></span></p>
+            <p>Vantaa, Finland <span><i className="bi bi-geo-alt-fill"></i></span></p>
+            <p><Link to="https://linh-my-le.netlify.app/" style={{ color: "black"}} target='_blank'>
+              linh-my-le.netlify.app/ </Link><span><i className="bi bi-link"></i></span>
+            </p>
+            <p><Link to="https://www.linkedin.com/in/linh-le-96baaa154/" style={{ color: "black"}} target='_blank'>
+              linkedin.com/in/linh-le-96baaa154/ </Link><span><i className="bi bi-linkedin"></i></span>
+            </p>
+            <p><Link to="https://github.com/LinhLe2307" style={{ color: "black"}} target='_blank'>
+              github.com/LinhLe2307 </Link><span><i className="bi bi-github"></i></span>
+            </p>
           </div>
         </div>
 
         <div className='row'>
-          <div className="col-lg-6 pr-lg-3">
+          <div className="col-lg-6" style={{ paddingRight: "2rem" }}>
             <div>
               <h3 className="resume-title">WORK EXPERIENCE</h3>
               {
@@ -78,7 +79,7 @@ const Resume = () => {
                       <h4 className='resume-company'>{education.school}</h4>
                       <p className='resume-year resume-font resume-color'><span>{education.year}</span><span>{education.location}</span></p>
                       <p className='resume-font resume-color'>{education.certificates ? 'Certificates:' : 'Courses:'}</p>
-                      <ul>
+                      <ul  className='resume-two-columns'>
                         {
                           education.certificates ? education.certificates.map(cer =>
                             <li key={cer}>{cer}</li>)
@@ -92,12 +93,12 @@ const Resume = () => {
               }
             </div>
           </div>
-          <div className="col-lg-6 pr-lg-3">
+          <div className="col-lg-6" style={{ paddingLeft: "3rem", paddingRight: "3rem" }}>
             {/* Technical Skills */}
             <div>
-              <h3 className="resume-title">TECHNICAL SKILLS</h3>
-              <div className="resume-item">
-                <ul className='resume-item-list'>
+              <h3 className="resume-title-right">TECHNICAL SKILLS</h3>
+              <div className="resume-item-right">
+                <ul className='resume-item-list resume-tech-skills'>
                 {
                   technicalLists.map(skill => <li key={skill}>{skill}</li>)
                 }
@@ -107,10 +108,10 @@ const Resume = () => {
 
             {/* Personal projects and activities  */}
             <div>
-              <h3 className="resume-title">PERSONAL PROJECTS AND ACTIVITIES</h3>
+              <h3 className="resume-title-right">PERSONAL PROJECTS AND ACTIVITIES</h3>
               {
                 personalProject.map(project => (
-                  <div className="resume-item">
+                  <div className="resume-item-right">
                     <div>
                       <h5 className='resume-company'>{project.title} 
                         {
@@ -133,8 +134,8 @@ const Resume = () => {
 
             {/* Languages */}
             <div>
-              <h3 className="resume-title">LANGUAGES</h3>
-              <div className="resume-item">
+              <h3 className="resume-title-right">LANGUAGES</h3>
+              <div className="resume-item-right">
                 <ul className='resume-language'>
                   <li><span>Vietnamese</span>
                     <span className='resume-font resume-color'>
@@ -153,8 +154,8 @@ const Resume = () => {
 
             {/* Soft skills  */}
             <div>
-              <h3 className="resume-title">SOFT SKILLS</h3>
-              <div className="resume-item">
+              <h3 className="resume-title-right">SOFT SKILLS</h3>
+              <div className="resume-item-right">
                 <ul className='resume-item-list'>
                   <li>Responsibility and trustworthy</li>
                   <li>Ability to learn</li>

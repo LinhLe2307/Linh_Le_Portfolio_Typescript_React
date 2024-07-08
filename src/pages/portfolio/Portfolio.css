@@ -1,8 +1,23 @@
 /*--------------------------------------------------------------
 # Portfolio
 --------------------------------------------------------------*/
+.portfolio {
+  font-family: "Raleway", sans-serif;
+}
 .portfolio .portfolio-item {
     margin-bottom: 30px;
+  }
+  
+  .portfolio .portfolio-item .portfolio-wrap {
+    height: 30rem;
+    overflow: hidden;
+  }
+  
+  .portfolio .portfolio-item .portfolio-wrap img {
+    min-width: 100%;
+    max-height: 30rem;
+    object-fit: cover;
+    object-position: center;
   }
   
   .portfolio #portfolio-flters {
@@ -160,7 +175,7 @@
   # Portfolio Details
   --------------------------------------------------------------*/
   .portfolio-details {
-    padding-top: 40px;
+    padding-top: 60px;
     background: rgba(0, 0, 0, 0.8);
     position: fixed;
     left: 0;
@@ -173,6 +188,8 @@
   .portfolio-details .container {
     padding-top: 20px;
     padding-bottom: 40px;
+    /* padding-left: 80px;
+    padding-right: 80px; */
   }
   
   .portfolio-details .portfolio-title {
@@ -191,7 +208,7 @@
     margin-bottom: 20px;
   }
   
-  .portfolio-details .portfolio-info ul {
+  .portfolio-details .portfolio-info > ul {
     list-style: none;
     padding: 0;
     font-size: 15px;
@@ -204,6 +221,15 @@
   .portfolio-details .portfolio-info p {
     font-size: 15px;
     padding: 15px 0 0 0;
+  }
+
+  .portfolio-details .swiper-slide {
+    max-width: 900px
+  }
+
+  .portfolio-details .swiper-slide img {
+    width: 100%;
+    object-fit: cover;
   }
   
   @media (max-width: 992px) {
@@ -226,4 +252,10 @@
   
   .portfolio-details .swiper-pagination .swiper-pagination-bullet-active {
     background-color: #18d26e;
+  }
+
+  .portfolio-close {
+    position: absolute;
+    top: 2rem;
+    right: 2rem
   }

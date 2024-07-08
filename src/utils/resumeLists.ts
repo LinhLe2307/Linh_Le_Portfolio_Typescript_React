@@ -112,21 +112,12 @@ export const educationList = [
   }
 ]
 
-export const summaryList = [
-  `Graduated as a driven full-stack web developer from Helsinki Business College with hands-on experience as a full-stack web developer at Druid Oy. 
-  My expertise including JavaScript, TypeScript, Python, PostgreSQL, React and Nodejs. 
-  I am currently in search of a dynamic role as a Full-stack Developer, where I can leverage my skills to contribute to and create innovative website solutions.`,
-  'Helsinki, Finland',
-  '+358 46 966 4393',
-  'lemylinh237@gmail.com'
-]
-
 export const technicalLists = [
   'JavaScript', 'TypeScript', 'PHP', 'Python',
   'React', 'Redux', 'Redux Saga',
-  'NodeJs / ExpressJs', 'AWS', 'Docker', 'GraphQL',
-  'PostgreSQL', 'MongoDB', 'Vitest Unit Testing',
-  'Symfony', 'Drupal',
-  'RESTful APIs', 'Git',
+  'NodeJs / ExpressJs', 'PostgreSQL', 'MongoDB', 
+  'RESTful APIs', 'GraphQL',
+  'AWS', 'Docker', 'CI/CD', 'DevOps', 'Vitest Unit Testing',
+  'Symfony', 'Drupal', 'Git',
   'Jira', 'Confluence', 'Slack', 'Figma'
 ]

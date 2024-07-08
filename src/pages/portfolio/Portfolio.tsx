@@ -1,15 +1,106 @@
-import portfolio1 from '../../assets/img/portfolio/portfolio-1.jpg'
-import portfolio2 from '../../assets/img/portfolio/portfolio-2.jpg'
-import portfolio3 from '../../assets/img/portfolio/portfolio-3.jpg'
-import portfolio4 from '../../assets/img/portfolio/portfolio-4.jpg'
-import portfolio5 from '../../assets/img/portfolio/portfolio-5.jpg'
-import portfolio6 from '../../assets/img/portfolio/portfolio-6.jpg'
-import portfolio7 from '../../assets/img/portfolio/portfolio-7.jpg'
-import portfolio8 from '../../assets/img/portfolio/portfolio-8.jpg'
-import portfolio9 from '../../assets/img/portfolio/portfolio-9.jpg'
-import './Portfolio.css'
+import { useQuery } from '@tanstack/react-query';
+import axios from 'axios';
+import { useState } from 'react';
+import { Link } from 'react-router-dom';
+import { projectsDetails } from '../../utils/projectLists';
+import { ObjectType } from '../types/portfolioTypes';
+import './Portfolio.css';
 
+const getAllProjects = async () => {
+  let requests = Object.keys(projectsDetails).map(id => axios.get(`https://api.github.com/repositories/${id}`)) 
+  let results
+
+  try {
+    const responses = await Promise.all(requests);
+    results = responses.map(response => response.data);
+  } catch (error) {
+    console.error('Error fetching repositories:', error);
+  }
+
+  const filterList = results && results.filter((project: ObjectType<string>) => Object.keys(projectsDetails).find(detail => +detail === +project.id))
+  const newData = Object.entries(projectsDetails).reduce((obj: ObjectType<ObjectType<string>>, currValue) => {
+    const findProject = filterList && filterList.find((project: ObjectType<string>) => +project.id === +currValue[0])
+      obj[currValue[0]] = {
+        ...currValue[1],
+        homepage: findProject.homepage,
+        html_url: findProject.html_url,
+        topics: findProject.topics && findProject.topics.map((topic: string) => topic.charAt(0).toUpperCase() + topic.slice(1)),
+        description: findProject.description,
+        created_at: findProject.created_at.slice(0,10),
+        updated_at: findProject.updated_at.slice(0,10)
+      }
+    return obj
+  }, {})
+
+  return newData
+  // return [
+  //   {
+  //     name: 'Countries App',
+  //     image: '/src/assets/projects/countries.png',
+  //      type: ['All', 'ReactJs'],
+  //       homepage: 'findProject.homepage',
+  //       html_url: 'findProject.html_url',
+  //       topics: ['findProject.topics'],
+  //       description: 'findProject.description',
+  //       created_at: 'findProject.created_at.slice(0,10)',
+  //       updated_at: 'findProject.updated_at.slice(0,10)'
+  //   },
+  //   {
+  //     name: 'CardIO App',
+  //     image: '/src/assets/projects/flashcard.png',
+  //     type: ['All','Ongoing', 'React', 'TypeScript', 'NodeJs'],
+  //     homepage: 'findProject.homepage',
+  //       html_url: 'findProject.html_url',
+  //       topics: ['findProject.topics'],
+  //       description: 'findProject.description',
+  //       created_at: 'findProject.created_at.slice(0,10)',
+  //       updated_at: 'findProject.updated_at.slice(0,10)'
+  //   },
+  //   {
+  //     name: 'SpeedGame App',
+  //     image: '/src/assets/projects/speedgame.png',
+  //      type: ['All', 'ReactJs'],
+  //      homepage: 'findProject.homepage',
+  //       html_url: 'findProject.html_url',
+  //       topics: ['findProject.topics'],
+  //       description: 'findProject.description',
+  //       created_at: 'findProject.created_at.slice(0,10)',
+  //       updated_at: 'findProject.updated_at.slice(0,10)'
+  //   },
+  //   {
+  //     name: 'Recipe App',
+  //     image: '/src/assets/projects/tasteIt.png',
+  //      type: ['All', 'ReactJs'],
+  //      homepage: 'findProject.homepage',
+  //       html_url: 'findProject.html_url',
+  //       topics: ['findProject.topics'],
+  //       description: 'findProject.description',
+  //       created_at: 'findProject.created_at.slice(0,10)',
+  //       updated_at: 'findProject.updated_at.slice(0,10)'
+  //   },
+  // ]
+}
 const Portfolio = () => {
+  const items = ['All', 'Ongoing', 'TypeScript', 'ReactJs', 'NodeJs'];
+  const [activeIndex, setActiveIndex] = useState(0);
+  const handleClick = (index: number) => {
+    setActiveIndex(index);
+  };
+
+  const { data, isLoading } = useQuery({
+    queryKey: ['projects'],
+    queryFn: getAllProjects
+  })
+
+  // Filter the data based on the filter criteria
+  const filteredData = data && Object.values(data).filter(project =>
+    project.type.indexOf(items[activeIndex]) !== -1
+  );
+
+  if (isLoading) {
+    return 'isLoading'
+  }
+
   return (
     <section id="portfolio" className="portfolio">
     <div className="container">
@@ -22,144 +113,47 @@ const Portfolio = () => {
       <div className="row">
         <div className="col-lg-12 d-flex justify-content-center">
           <ul id="portfolio-flters">
-            <li data-filter="*" className="filter-active">All</li>
-            <li data-filter=".filter-app">App</li>
-            <li data-filter=".filter-card">Card</li>
-            <li data-filter=".filter-web">Web</li>
+            {items.map((item, index) => (
+              <li
+                key={index}
+                className={index === activeIndex ? "filter-active" : ''}
+                onClick={() => handleClick(index)}
+              >
+                {item}
+              </li>
+            ))}
+            
           </ul>
         </div>
       </div>
 
       <div className="row portfolio-container">
 
-        <div className="col-lg-4 col-md-6 portfolio-item filter-app">
-          <div className="portfolio-wrap">
-            <img src={portfolio1} className="img-fluid" alt="" />
-            <div className="portfolio-info">
-              <h4>App 1</h4>
-              <p>App</p>
-              <div className="portfolio-links">
-                <a href={portfolio1} data-gallery="portfolioGallery" className="portfolio-lightbox" title="App 1"><i className="bx bx-plus"></i></a>
-                <a href="portfolio-details.html" data-gallery="portfolioDetailsGallery" data-glightbox="type: external" className="portfolio-details-lightbox" title="Portfolio Details"><i className="bx bx-link"></i></a>
+        {
+          filteredData && filteredData.map((portfolio) => {
+            return (
+              <div className="col-lg-6 col-md-6 portfolio-item filter-app" key={portfolio.name}>
+                <div className="portfolio-wrap">
+                  <img src={portfolio.image[0]} className="img-fluid" alt=""/>
+                  <div className="portfolio-info">
+                    <h4>{portfolio.name}</h4>
+                    <p>{items[activeIndex]}</p>
+                    <div className="portfolio-links">
+                      {/* <Link>
+                        <i className="bx bx-plus"><AddIcon /></i>
+                      </Link> */}
+                      <Link to={`${portfolio.name}`} state={{portfolio}}>
+                        <i className="bx bx-link"></i>
+                      </Link>
+                    </div>
+                  </div>
+                </div>
               </div>
-            </div>
-          </div>
-        </div>
-
-        <div className="col-lg-4 col-md-6 portfolio-item filter-web">
-          <div className="portfolio-wrap">
-            <img src={portfolio2} className="img-fluid" alt="" />
-            <div className="portfolio-info">
-              <h4>Web 3</h4>
-              <p>Web</p>
-              <div className="portfolio-links">
-                <a href={portfolio2} data-gallery="portfolioGallery" className="portfolio-lightbox" title="Web 3"><i className="bx bx-plus"></i></a>
-                <a href="portfolio-details.html" data-gallery="portfolioDetailsGallery" data-glightbox="type: external" className="portfolio-details-lightbox" title="Portfolio Details"><i className="bx bx-link"></i></a>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div className="col-lg-4 col-md-6 portfolio-item filter-app">
-          <div className="portfolio-wrap">
-            <img src={portfolio3} className="img-fluid" alt="" />
-            <div className="portfolio-info">
-              <h4>App 2</h4>
-              <p>App</p>
-              <div className="portfolio-links">
-                <a href={portfolio3} data-gallery="portfolioGallery" className="portfolio-lightbox" title="App 2"><i className="bx bx-plus"></i></a>
-                <a href="portfolio-details.html" data-gallery="portfolioDetailsGallery" data-glightbox="type: external" className="portfolio-details-lightbox" title="Portfolio Details"><i className="bx bx-link"></i></a>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div className="col-lg-4 col-md-6 portfolio-item filter-card">
-          <div className="portfolio-wrap">
-            <img src={portfolio4} className="img-fluid" alt="" />
-            <div className="portfolio-info">
-              <h4>Card 2</h4>
-              <p>Card</p>
-              <div className="portfolio-links">
-                <a href={portfolio4} data-gallery="portfolioGallery" className="portfolio-lightbox" title="Card 2"><i className="bx bx-plus"></i></a>
-                <a href="portfolio-details.html" data-gallery="portfolioDetailsGallery" data-glightbox="type: external" className="portfolio-details-lightbox" title="Portfolio Details"><i className="bx bx-link"></i></a>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div className="col-lg-4 col-md-6 portfolio-item filter-web">
-          <div className="portfolio-wrap">
-            <img src={portfolio5} className="img-fluid" alt="" />
-            <div className="portfolio-info">
-              <h4>Web 2</h4>
-              <p>Web</p>
-              <div className="portfolio-links">
-                <a href={portfolio5} data-gallery="portfolioGallery" className="portfolio-lightbox" title="Web 2"><i className="bx bx-plus"></i></a>
-                <a href="portfolio-details.html" data-gallery="portfolioDetailsGallery" data-glightbox="type: external" className="portfolio-details-lightbox" title="Portfolio Details"><i className="bx bx-link"></i></a>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div className="col-lg-4 col-md-6 portfolio-item filter-app">
-          <div className="portfolio-wrap">
-            <img src={portfolio6} className="img-fluid" alt="" />
-            <div className="portfolio-info">
-              <h4>App 3</h4>
-              <p>App</p>
-              <div className="portfolio-links">
-                <a href={portfolio6} data-gallery="portfolioGallery" className="portfolio-lightbox" title="App 3"><i className="bx bx-plus"></i></a>
-                <a href="portfolio-details.html" data-gallery="portfolioDetailsGallery" data-glightbox="type: external" className="portfolio-details-lightbox" title="Portfolio Details"><i className="bx bx-link"></i></a>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div className="col-lg-4 col-md-6 portfolio-item filter-card">
-          <div className="portfolio-wrap">
-            <img src={portfolio7} className="img-fluid" alt="" />
-            <div className="portfolio-info">
-              <h4>Card 1</h4>
-              <p>Card</p>
-              <div className="portfolio-links">
-                <a href={portfolio7} data-gallery="portfolioGallery" className="portfolio-lightbox" title="Card 1"><i className="bx bx-plus"></i></a>
-                <a href="portfolio-details.html" data-gallery="portfolioDetailsGallery" data-glightbox="type: external" className="portfolio-details-lightbox" title="Portfolio Details"><i className="bx bx-link"></i></a>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div className="col-lg-4 col-md-6 portfolio-item filter-card">
-          <div className="portfolio-wrap">
-            <img src={portfolio8} className="img-fluid" alt="" />
-            <div className="portfolio-info">
-              <h4>Card 3</h4>
-              <p>Card</p>
-              <div className="portfolio-links">
-                <a href={portfolio8} data-gallery="portfolioGallery" className="portfolio-lightbox" title="Card 3"><i className="bx bx-plus"></i></a>
-                <a href="portfolio-details.html" data-gallery="portfolioDetailsGallery" data-glightbox="type: external" className="portfolio-details-lightbox" title="Portfolio Details"><i className="bx bx-link"></i></a>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div className="col-lg-4 col-md-6 portfolio-item filter-web">
-          <div className="portfolio-wrap">
-            <img src={portfolio9} className="img-fluid" alt="" />
-            <div className="portfolio-info">
-              <h4>Web 3</h4>
-              <p>Web</p>
-              <div className="portfolio-links">
-                <a href={portfolio9} data-gallery="portfolioGallery" className="portfolio-lightbox" title="Web 3"><i className="bx bx-plus"></i></a>
-                <a href="portfolio-details.html" data-gallery="portfolioDetailsGallery" data-glightbox="type: external" className="portfolio-details-lightbox" title="Portfolio Details"><i className="bx bx-link"></i></a>
-              </div>
-            </div>
-          </div>
-        </div>
+            )
+        })
+        }
 
       </div>
-
     </div>
     </section>
   )

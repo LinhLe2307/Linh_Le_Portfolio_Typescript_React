@@ -14,7 +14,7 @@ const About = () => {
 
   <div className="row">
     <div className="col-lg-4" data-aos="fade-right">
-      <img src="https://plus.unsplash.com/premium_photo-1718119451394-18ff492490e4?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" className="img-fluid" alt="" />
+      {/* <img src="https://plus.unsplash.com/premium_photo-1718119451394-18ff492490e4?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" className="img-fluid" alt="" /> */}
     </div>
     <div className="col-lg-8 pt-4 pt-lg-0 content" data-aos="fade-left">
       <h3>Full-stack Web Developer</h3>
@@ -34,7 +34,6 @@ const About = () => {
         </div>
         <div className="col-lg-6">
           <ul>
-            
             {
              aboutMe[1] && Object.entries(aboutMe[1]).map(([key, value])=> {
               return (
@@ -44,7 +43,7 @@ const About = () => {
                   {key === 'Email' ? (
                     <span>{value}</span>
                   ) : (
-                    <Link to={value}><span>{value}</span></Link>
+                    <Link to={value}><span>{value.replace(/^https?:\/\/(www\.)?/, '')}</span></Link>
                   )}
               </li>
               )
