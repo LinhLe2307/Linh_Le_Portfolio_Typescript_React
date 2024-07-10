@@ -1,10 +1,12 @@
 import { useQuery } from '@tanstack/react-query';
+import CircularProgress from '@mui/material/CircularProgress';
 import axios from 'axios';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { projectsDetails } from '../../utils/projectLists';
 import { ObjectType } from '../types/portfolioTypes';
 import './Portfolio.css';
+import Info from '../info/Info';
 
 const getAllProjects = async () => {
   let requests = Object.keys(projectsDetails).map(id => axios.get(`https://api.github.com/repositories/${id}`)) 
@@ -33,55 +35,9 @@ const getAllProjects = async () => {
   }, {})
 
   return newData
-  // return [
-  //   {
-  //     name: 'Countries App',
-  //     image: '/src/assets/projects/countries.png',
-  //      type: ['All', 'ReactJs'],
-  //       homepage: 'findProject.homepage',
-  //       html_url: 'findProject.html_url',
-  //       topics: ['findProject.topics'],
-  //       description: 'findProject.description',
-  //       created_at: 'findProject.created_at.slice(0,10)',
-  //       updated_at: 'findProject.updated_at.slice(0,10)'
-  //   },
-  //   {
-  //     name: 'CardIO App',
-  //     image: '/src/assets/projects/flashcard.png',
-  //     type: ['All','Ongoing', 'React', 'TypeScript', 'NodeJs'],
-  //     homepage: 'findProject.homepage',
-  //       html_url: 'findProject.html_url',
-  //       topics: ['findProject.topics'],
-  //       description: 'findProject.description',
-  //       created_at: 'findProject.created_at.slice(0,10)',
-  //       updated_at: 'findProject.updated_at.slice(0,10)'
-  //   },
-  //   {
-  //     name: 'SpeedGame App',
-  //     image: '/src/assets/projects/speedgame.png',
-  //      type: ['All', 'ReactJs'],
-  //      homepage: 'findProject.homepage',
-  //       html_url: 'findProject.html_url',
-  //       topics: ['findProject.topics'],
-  //       description: 'findProject.description',
-  //       created_at: 'findProject.created_at.slice(0,10)',
-  //       updated_at: 'findProject.updated_at.slice(0,10)'
-  //   },
-  //   {
-  //     name: 'Recipe App',
-  //     image: '/src/assets/projects/tasteIt.png',
-  //      type: ['All', 'ReactJs'],
-  //      homepage: 'findProject.homepage',
-  //       html_url: 'findProject.html_url',
-  //       topics: ['findProject.topics'],
-  //       description: 'findProject.description',
-  //       created_at: 'findProject.created_at.slice(0,10)',
-  //       updated_at: 'findProject.updated_at.slice(0,10)'
-  //   },
-  // ]
 }
 const Portfolio = () => {
-  const items = ['All', 'Ongoing', 'TypeScript', 'ReactJs', 'NodeJs'];
+  const items = ['All', 'TypeScript', 'ReactJs', 'NodeJs'];
   const [activeIndex, setActiveIndex] = useState(0);
   const handleClick = (index: number) => {
     setActiveIndex(index);
@@ -98,64 +54,76 @@ const Portfolio = () => {
   );
 
   if (isLoading) {
-    return 'isLoading'
+    return <div style={{ textAlign: "center" }}>
+        <CircularProgress />
+      </div>
   }
 
   return (
-    <section id="portfolio" className="portfolio">
-    <div className="container">
+    <Info> 
+      <div className='info-item-4 info-item info-scrolling-content'>
+        <section id="portfolio" className="portfolio ">
+        <div className="container">
 
-      <div className="section-title">
-        <h2>Portfolio</h2>
-        <p>My Works</p>
-      </div>
+          <div className="section-title">
+            <h2>Portfolio</h2>
+            <p>My Works</p>
+          </div>
 
-      <div className="row">
-        <div className="col-lg-12 d-flex justify-content-center">
-          <ul id="portfolio-flters">
-            {items.map((item, index) => (
-              <li
-                key={index}
-                className={index === activeIndex ? "filter-active" : ''}
-                onClick={() => handleClick(index)}
-              >
-                {item}
-              </li>
-            ))}
-            
-          </ul>
-        </div>
-      </div>
+          <div className="row">
+            <div className="col-lg-12 d-flex justify-content-center">
+              <ul id="portfolio-flters">
+                {items.map((item, index) => (
+                  <li
+                    key={index}
+                    className={index === activeIndex ? "filter-active" : ''}
+                    onClick={() => handleClick(index)}
+                  >
+                    {item}
+                  </li>
+                ))}
+                
+              </ul>
+            </div>
+          </div>
 
-      <div className="row portfolio-container">
+          <div className="row portfolio-container">
 
-        {
-          filteredData && filteredData.map((portfolio) => {
-            return (
-              <div className="col-lg-6 col-md-6 portfolio-item filter-app" key={portfolio.name}>
-                <div className="portfolio-wrap">
-                  <img src={portfolio.image[0]} className="img-fluid" alt=""/>
-                  <div className="portfolio-info">
-                    <h4>{portfolio.name}</h4>
-                    <p>{items[activeIndex]}</p>
-                    <div className="portfolio-links">
-                      {/* <Link>
-                        <i className="bx bx-plus"><AddIcon /></i>
-                      </Link> */}
-                      <Link to={`${portfolio.name}`} state={{portfolio}}>
-                        <i className="bx bx-link"></i>
-                      </Link>
+            {
+              filteredData && filteredData.map((portfolio) => {
+                return (
+                  <div className="col-lg-12 col-md-12 portfolio-item filter-app" key={portfolio.name}>
+                    <div className="portfolio-wrap">
+                      <img src={portfolio.image[0]} className="img-fluid" alt=""/>
+                      <div className="portfolio-info">
+                        <h4>{portfolio.name}</h4>
+                        <p>{items[activeIndex]}</p>
+                        <div className="portfolio-links">
+                          <Link to={`${portfolio.homepage}`} className='portfolio-more-info' target='_blank'>
+                            <i className="bx bx-plus"></i>
+                            <div className="text">
+                              VIEW DEMO
+                            </div>
+                          </Link>
+                          <Link to={`${portfolio.name}`} state={{portfolio}} className='portfolio-more-info'>
+                            <i className="bx bx-link"></i>
+                            <div className="text">
+                              MORE INFORMATION
+                            </div>
+                          </Link>
+                        </div>
+                      </div>
                     </div>
                   </div>
-                </div>
-              </div>
-            )
-        })
-        }
+                )
+            })
+            }
 
+          </div>
+        </div>
+        </section>
       </div>
-    </div>
-    </section>
+    </Info>
   )
 }
 

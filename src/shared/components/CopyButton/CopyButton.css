@@ -1,0 +1,19 @@
+.copy {
+    position: relative;
+}
+.copy-text {
+    position: absolute;
+    top: 105%;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #f9f9f9;
+    border-radius: 5px;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+    color: black;
+    width: 3.5rem;
+    height: 1.5rem;
+    font-size: 12px;
+    opacity: 1;
+    visibility: visible;
+    text-align: center;
+}

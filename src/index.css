@@ -1,11 +1,26 @@
 @import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap');
 
+:root {
+  --bs-card-color: #080404;
+  --bg-color:rgb(33, 32, 32);
+  --dark-theme-black: #10141c;
+  --dark-theme-light-white: rgba(240, 242, 245, 0.7);
+  --dark-theme-white: #f0f2f5;
+  --light-black: #576076;
+  --link-green: #18d26e;
+  --dark-green: #48949c;
+  --teal: #008080;
+  --dodger-blue: #1E90FF;
+  --button-hover-color: #00BFFF;
+}
+
 html {
   font-family: "Raleway", sans-serif;
   max-width: 2500px;
 }
 body {
-  background-color: #040404;
+  /* background-color: #040404; */
+  background-color: var(--bg-color);
   color: #fff;
   position: relative;
   background: transparent;
@@ -14,13 +29,17 @@ body {
 body::before {
   content: "";
   position: fixed;
-  background: #040404 url("../img/bg.jpg") top right no-repeat;
+  background: var(--bg-color) url('') top right no-repeat;
   background-size: cover;
   left: 0;
   right: 0;
   top: 0;
   height: 100vh;
   z-index: -1;
+}
+
+i {
+  font-size: 1.5rem;
 }
 
 @media (min-width: 1024px) {
@@ -30,13 +49,17 @@ body::before {
 }
 
 a {
-  color: #18d26e;
+  /* color: #18d26e; */
+  color:#f0f2f5;
   text-decoration: none;
 }
 
 a:hover {
-  color: #35e888;
   text-decoration: none;
+}
+
+button:hover, a:hover {
+  color: var(--button-hover-color);
 }
 
 h1,
@@ -47,3 +70,65 @@ h5,
 h6 {
   font-family: "Raleway", sans-serif;
 }
+
+section {
+  overflow: hidden;
+  width: 100%;
+  top: 140px;
+  bottom: 100%;
+  transition: ease-in-out 0.4s;
+  z-index: 2;
+}
+
+section.section-show {
+  top: 100px;
+  bottom: auto;
+  opacity: 1;
+  padding-bottom: 45px;
+}
+
+/* section .container {
+  background: rgba(0, 0, 0, 0.9);
+  padding: 30px;
+} */
+
+/* @media (max-width: 768px) {
+  section {
+    top: 120px;
+  }
+
+  section.section-show {
+    top: 80px;
+  }
+}
+
+.section-title h2 {
+  font-size: 14px;
+  font-weight: 500;
+  padding: 0;
+  line-height: 1px;
+  margin: 0 0 20px 0;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #aaaaaa;
+  font-family: "Poppins", sans-serif;
+}
+
+.section-title h2::after {
+  content: "";
+  width: 120px;
+  height: 1px;
+  display: inline-block;
+  background: #4ceb95;
+  margin: 4px 10px;
+} */
+
+/* .section-title p {
+  margin: 0;
+  margin: -15px 0 15px 0;
+  font-size: 36px;
+  font-weight: 700;
+  text-transform: uppercase;
+  font-family: "Poppins", sans-serif;
+  color: #fff;
+} */

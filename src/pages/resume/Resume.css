@@ -6,6 +6,7 @@
   color: black;
   font-family: "Raleway", sans-serif !important;
   /* width: 3508px; */
+  max-width: 80%;
   min-height: 2100px;
   padding: 2rem 0 0 0;
   margin-top: 3rem;
@@ -24,7 +25,6 @@
 
 .section-media {
   margin-right: 3rem;
-  margin-top: 3rem;
 }
 
 .section-column {
@@ -47,7 +47,7 @@
 }
 
 .resume-title {
-  margin-left: 5rem;
+  margin-left: 4rem;
 }
 
 .resume-title, .resume-subtitle, .resume-title-right {
@@ -67,12 +67,12 @@
 
 .resume .resume-item::before, .resume .section-title::before {
   content: '';
-  margin-top: 1rem;
-  height: 6rem;
-  min-width: 4rem;
+  height: 5rem;
+  min-width: 3rem;
+  /* width: 3rem; */
   display: block;
   /* padding: 10px; */
-  background-color: #48949c;
+  background-color: var(--dark-green);
   /* border: 1px solid #ccc; */
   /* margin-bottom: 10px; */
 }
@@ -88,7 +88,7 @@
 }
 
 .resume-color {
-  color: #48949c;
+  color: var(--dark-green);
 }
 
 .resume-font {
@@ -154,4 +154,42 @@
 
 .resume-company {
   font-size: 18px
+}
+
+@media (max-width: 992px) {
+  .resume .section-title {
+    flex-direction: column;
+  }
+
+  .section-column:nth-child(3) {
+    text-align: start;
+  }
+
+  .section-column:nth-child(3) p {
+    margin: 0;
+  }
+
+  .resume .section-title::before  {
+    height: 0 !important;
+  }
+
+  .resume .resume-item::before {
+    min-width: 2rem !important;
+  }
+
+  .resume .resume-two-columns {
+    columns: 1;
+  }
+
+  .resume-two-columns li {
+    break-inside: avoid;
+    margin-bottom: 0.5rem;
+    margin-right: 0
+  }
+
+  .resume .container {
+    min-width: 90% !important;
+    padding-top: 0;
+    border-radius: 10px;
+  }
 }

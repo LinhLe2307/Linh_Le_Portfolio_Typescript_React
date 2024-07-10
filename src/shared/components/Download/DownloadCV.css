@@ -1,0 +1,7 @@
+.btn-download {
+    background-color: var(--dodger-blue) !important;
+}
+
+.btn-download:hover {
+    background-color: var(--button-hover-color) !important;
+}

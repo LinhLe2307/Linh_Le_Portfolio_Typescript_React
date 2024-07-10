@@ -24,7 +24,7 @@ export const projectsDetails: ProjectDetailsProps = {
         image: [flashcard, flashcard2, flashcard3, flashcard4],
         type: ['All', 'Ongoing', 'ReactJs', 'TypeScript', 'NodeJs']
     },
-    475020012: {
+    524892489: {
         name: 'Countries App',
         image: [countries, countries2, countries3],
         type: ['All', 'ReactJs']
