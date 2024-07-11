@@ -1,9 +1,7 @@
-import Button from "../FormElements/Button"
-
 const Filter = () => {
     return (
         <div>
-            <Button>Reset</Button>
+            <button type='button'>Reset</button>
         </div>
     )
 }

@@ -1,6 +1,3 @@
-import { Link } from "react-router-dom"
-import { aboutMe } from "../../utils/aboutLists"
-import avatar from "../../assets/img/Avatar.jpg"
 // import "./About.css"
 import Info from "../info/Info"
 

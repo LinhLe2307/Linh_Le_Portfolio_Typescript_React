@@ -1,4 +1,3 @@
-import Button from '../FormElements/Button';
 import Modal from './Modal';
 
 interface ErrorModalProps {
@@ -12,7 +11,7 @@ const ErrorModal = ({onClear, error}: ErrorModalProps) => {
       onCancel={onClear}
       header="An Error Occurred!"
       show={!!error}
-      footer={<Button onClick={onClear}>Okay</Button>}
+      footer={<button type='button' onClick={onClear}>Okay</button>}
     >
       <p>{error}</p>
     </Modal>

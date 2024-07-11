@@ -1,10 +1,27 @@
-import React from 'react';
+import React, { ReactNode } from 'react';
 import ReactDOM from 'react-dom';
 import { CSSTransition } from 'react-transition-group';
 
 import Backdrop from './Backdrop';
 import './Modal.css';
-import { ModalOverlayProps, ModalProps } from '../../types/modalTypes';
+
+export interface ModalOverlayProps {
+  className?: string
+  style?: string
+  headerClass?: string
+  header: string
+  onSubmit?: ()=>void
+  contentClass?: string 
+  children?: ReactNode
+  footerClass?: string
+  footer: ReactNode 
+}
+
+export interface ModalProps extends ModalOverlayProps {
+  show: boolean
+  onCancel: ()=>void
+  
+}
 
 const ModalOverlay = (props:ModalOverlayProps) => {
   const content = (
