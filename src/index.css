@@ -54,12 +54,13 @@ button, input {
 
 a {
   /* color: #18d26e; */
-  color:#f0f2f5;
+  /* color:#f0f2f5; */
   text-decoration: none;
 }
 
 a:hover {
   text-decoration: none;
+  color: var(--button-hover-color)
 }
 
 button:hover, a:hover {

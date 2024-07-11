@@ -277,9 +277,9 @@
   }
 
   .portfolio-recent-projects a:hover {
-    color: var(--button-hover-color)
+    color: var(--button-hover-color) 
   }
-  
+
   @media (max-width: 992px) {
     .portfolio {
       padding: 0;

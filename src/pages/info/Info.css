@@ -9,7 +9,7 @@
     margin: auto;
     max-width: 1320px;
     color: var(--dark-theme-light-white);
-    overflow: hidden;
+    /* overflow: hidden; */
     margin-top: 3rem;
 }
 
@@ -75,6 +75,10 @@
 .info-media {
     display: flex;
     gap: 1rem
+}
+
+.info-media a {
+    color: #f0f2f5;
 }
 
 .info-expertise {

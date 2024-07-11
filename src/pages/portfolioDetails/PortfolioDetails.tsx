@@ -69,11 +69,11 @@ const PortfolioDetails = () => {
               </li>
               <li><strong>Project DEMO: </strong>
                 <Link to={projectDetails.portfolio.homepage} target='_blank'> 
-                  {projectDetails.portfolio.homepage.replace(/^https?:\/\/(www\.)?/, '')}
+                  <span className='portfolio-info__link'>{projectDetails.portfolio.homepage.replace(/^https?:\/\/(www\.)?/, '')}</span>
                 </Link>
               </li>
               <li><strong>Github: </strong>
-                <Link to={projectDetails.portfolio.html_url} target='_blank'> 
+                <Link to={projectDetails.portfolio.html_url} target='_blank' className='portfolio-info__link'> 
                   {projectDetails.portfolio.html_url.replace(/^https?:\/\/(www\.)?/, '')}
                 </Link>
               </li>
