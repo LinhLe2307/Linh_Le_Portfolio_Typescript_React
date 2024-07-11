@@ -17,3 +17,18 @@
     visibility: visible;
     text-align: center;
 }
+
+.copy-subcontainer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 5px;
+}
+
+.copy-btn {
+    color: var(--dodger-blue);
+}
+
+.copy-btn:hover {
+    background-color: var(--button-hover-color);
+}

@@ -4,14 +4,13 @@ import {
 } from '@tanstack/react-query';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import './App.css';
-import About from './pages/about/About';
 import Contact from './pages/contact/Contact';
+import HomePage from './pages/homepage/HomePage';
 import Portfolio from './pages/portfolio/Portfolio';
+import PortfolioDetails from './pages/portfolioDetails/PortfolioDetails';
 import Resume from './pages/resume/Resume';
 import MainPage from './shared/components/MainPage/MainPage';
 import MainNavigation from './shared/components/Navigation/MainNavigation';
-import NavLinks from './shared/components/Navigation/NavLinks';
-import PortfolioDetails from './pages/portfolioDetails/PortfolioDetails';
 
 function App() {
   const client = new QueryClient()
@@ -19,12 +18,11 @@ function App() {
   return (
     <QueryClientProvider client={client}>
       <BrowserRouter>
-        <NavLinks />
+      <MainNavigation />
         <main>
           <Routes>
             <Route path="/" element={<MainPage />}>
-              <Route index element={<MainNavigation />}/>
-              {/* <Route path="/about" element={<About />}/> */}
+              <Route index element={<HomePage />}/>
               <Route path="/resume" element={<Resume />}/>
               <Route path="/portfolio" element={<Portfolio />}/>
               <Route path="/portfolio/:name" element={<PortfolioDetails />}/>

@@ -1,12 +1,12 @@
 import { useQuery } from '@tanstack/react-query';
-import CircularProgress from '@mui/material/CircularProgress';
 import axios from 'axios';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { projectsDetails } from '../../utils/projectLists';
-import { ObjectType } from '../types/portfolioTypes';
-import './Portfolio.css';
 import Info from '../info/Info';
+import { ObjectType } from '../types/portfolioTypes';
+import flashcard from '../../assets/projects/flashcard/flashcard.png';
+import './Portfolio.css';
 
 const getAllProjects = async () => {
   let requests = Object.keys(projectsDetails).map(id => axios.get(`https://api.github.com/repositories/${id}`)) 
@@ -55,7 +55,9 @@ const Portfolio = () => {
 
   if (isLoading) {
     return <div style={{ textAlign: "center" }}>
-        <CircularProgress />
+        <div className="spinner-border" role="status">
+          <span className="sr-only"></span>
+        </div>
       </div>
   }
 
@@ -94,7 +96,7 @@ const Portfolio = () => {
                 return (
                   <div className="col-lg-12 col-md-12 portfolio-item filter-app" key={portfolio.name}>
                     <div className="portfolio-wrap">
-                      <img src={portfolio.image[0]} className="img-fluid" alt=""/>
+                      <img src={portfolio.name !== 'CardIO App' ? portfolio.image[0] : flashcard} className="img-fluid" alt=""/>
                       <div className="portfolio-info">
                         <h4>{portfolio.name}</h4>
                         <p>{items[activeIndex]}</p>

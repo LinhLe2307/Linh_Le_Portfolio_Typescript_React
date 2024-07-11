@@ -1,12 +1,12 @@
 import React from 'react'
-import './MainHeader.css'
+// import './MainHeader.css'
 interface MainHeaderProps {
     children: React.ReactNode
 }
 
 const MainHeader = ({children}: MainHeaderProps) => {
   return (
-    <header id='header'>
+    <header className='header'>
         {children}
     </header>
   )

@@ -1,7 +1,6 @@
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { A11y, Navigation, Pagination, Scrollbar } from 'swiper/modules';
 
-import CloseIcon from '@mui/icons-material/Close';
 import { Swiper, SwiperSlide } from 'swiper/react';
 // Import Swiper styles
 import 'swiper/css';
@@ -17,7 +16,8 @@ const PortfolioDetails = () => {
 
   return (
     <div id="portfolio-details" className="portfolio-details">
-        <i onClick={() => navigate('/portfolio')} style={{ cursor: 'pointer' }} className="portfolio-close"><CloseIcon /></i>
+        {/* <i onClick={() => navigate('/portfolio')} style={{ cursor: 'pointer' }} className="portfolio-close"><CloseIcon /></i> */}
+        <i onClick={() => navigate('/portfolio')} className="bi bi-x-lg portfolio-close"></i>
       <div className="container">
 
         <div className="row">

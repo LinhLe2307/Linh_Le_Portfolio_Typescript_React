@@ -1,6 +1,6 @@
 .contact .info-box {
     color: #444444;
-    padding: 20px;
+    padding: 10px;
     width: 100%;
     background: rgba(255, 255, 255, 0.08);
   }
@@ -27,6 +27,7 @@
     line-height: 24px;
     font-size: 14px;
     margin: 0 0 0 68px;
+    font-family: "Raleway", sans-serif;
   }
   
   .contact .info-box .social-links {
@@ -152,3 +153,12 @@
     }
   }
   
+@media (max-width: 1200px) {
+  .contact {
+    padding: 20px;
+  }
+
+  .contact .container {
+    padding: 0;
+  }
+}

@@ -1,7 +1,7 @@
 /*--------------------------------------------------------------
 # Header
 --------------------------------------------------------------*/
-/* #header {
+#header {
   transition: ease-in-out 0.3s;
   position: relative;
   height: 100vh;
@@ -40,7 +40,7 @@
 /* #header img {
   padding: 0;
   margin: 0;
-} 
+} */
 
 #header .social-links {
   margin-top: 40px;
@@ -86,7 +86,7 @@
   }
 }
 
-
+/* Header Top */
 #header.header-top {
   height: 80px;
   position: fixed;
@@ -109,7 +109,7 @@
 /* #header.header-top img {
   max-height: 60px;
   margin-right: 20px !important;
-} 
+} */
 
 #header.header-top .container {
   display: flex;
@@ -128,4 +128,4 @@
   #header.header-top h1 {
     font-size: 26px;
   }
-} */
+}

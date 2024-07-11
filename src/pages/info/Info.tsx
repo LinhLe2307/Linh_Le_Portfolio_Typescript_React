@@ -13,7 +13,8 @@ const Info = ({children}: { children: React.ReactNode }) => {
                 <img src={avatar} />
                 <h2>Linh Le</h2>
                 <p>I am a passionate <span style={{ color: "white" }}><strong>full-stack web developer</strong></span> from Helsinki, Finland.
-                Graduated from Helsinki Business College as a driven full-stack web developer with hands-on experience at Druid Oy, 
+                Graduated from  <span style={{ color: "white" }}><strong>Helsinki Business College</strong></span> as a driven 
+                full-stack web developer with hands-on experience at <span style={{ color: "white" }}><strong>Druid Oy</strong></span>, 
                 I am looking for a full-stack web developer position.
                 </p>
                 <div className='info-download'>

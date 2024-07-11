@@ -1,11 +1,10 @@
-import { Button } from '@mui/material';
 import { useState } from 'react';
-import './CopyButton.css'
+import './CopyButton.css';
 
 const CopyButton = () => {
     const [copySuccess, setCopySuccess] = useState('');
 
-    const textToCopy = "lemylinh237@gmail.com";
+    const textToCopy = 'lemylinh237@gmail.com';
 
     const copyToClipboard = () => {
         navigator.clipboard.writeText(textToCopy).then(() => {
@@ -21,10 +20,13 @@ const CopyButton = () => {
 
     return (
         <div className='copy'>
-            {copySuccess && <p className="copy-text">{copySuccess}</p>}
-            <Button variant="outlined" onClick={copyToClipboard}>
-                <span><i className="bi bi-copy"></i> Copy email</span>
-            </Button>
+            {copySuccess && <p className='copy-text'>{copySuccess}</p>}
+            <button 
+                type='button' className='btn btn-outline-primary copy-btn' onClick={copyToClipboard}
+            >
+                <span className='copy-subcontainer'>
+                    <i className='bi bi-copy'></i> <span>Copy email</span></span>
+            </button>
         </div>
     );
 };

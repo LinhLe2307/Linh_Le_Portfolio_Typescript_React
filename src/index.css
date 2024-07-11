@@ -16,7 +16,7 @@
 
 html {
   font-family: "Raleway", sans-serif;
-  max-width: 2500px;
+  max-width: 2800px;
 }
 body {
   /* background-color: #040404; */
@@ -40,6 +40,10 @@ body::before {
 
 i {
   font-size: 1.5rem;
+}
+
+button, input {
+  font-family: "Raleway", sans-serif !important;
 }
 
 @media (min-width: 1024px) {

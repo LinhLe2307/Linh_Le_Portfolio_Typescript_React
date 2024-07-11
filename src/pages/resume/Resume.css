@@ -1,19 +1,43 @@
 /*--------------------------------------------------------------
 # Resume
 --------------------------------------------------------------*/
+.resume {
+  padding: 31px;
+}
+
+.resume i {
+  font-size: 1.25rem;
+}
+
+.resume-company i {
+  font-size: 14px;
+  margin-left: 5px;
+}
+
 .resume .container {
   background-color: white;
   color: black;
   font-family: "Raleway", sans-serif !important;
-  /* width: 3508px; */
-  max-width: 80%;
   min-height: 2100px;
   padding: 2rem 0 0 0;
-  margin-top: 3rem;
+}
+
+.resume .container .section-column h2 {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.resume .container h2, .resume .container h4 {
+  color: black;
+}
+
+.resume .container p, .resume .container li {
+  font-size: 14px;
+  margin-bottom: 5px;
 }
 
 .resume .container h4 {
-  font-size: 24px !important;
+  font-size: 22px !important;
   min-height: 24px;
   line-height: 26px !important;
 }
@@ -24,12 +48,11 @@
 }
 
 .section-media {
-  margin-right: 3rem;
+  margin-right: 1.5rem;
 }
 
 .section-column {
   flex: 1;
-  padding: 10px;
   box-sizing: border-box; /* Ensure padding does not affect the width */
 }
 
@@ -42,33 +65,53 @@
   object-fit: cover;
 }
 
+.section-column:nth-child(2) {
+  max-width: 10rem;
+}
+
+.section-column:nth-child(2) img {
+  width: 9rem;
+  height: 9rem;
+}
+
 .section-column:nth-child(3) {
   text-align: end;
 }
 
 .resume-title {
-  margin-left: 4rem;
+  margin-left: 3rem;
 }
 
 .resume-title, .resume-subtitle, .resume-title-right {
   font-weight: 700;
 }
 
-.section-title, .resume-item, .resume-item-right  {
+.section-title, .resume-item, .resume-item-right, .resume-item-right-activity  {
   position: relative;
   gap: 1rem;
 }
 
 .resume-item, .resume-item-right {
-  margin-bottom: 1rem;
   line-height: 20px;
   display: flex;
 }
 
+.resume-item {
+  margin-bottom: 1rem;
+}
+
+.resume-item-right-activity {
+  margin-bottom: 2rem;
+}
+
+.resume-item-right {
+  margin-bottom: 3rem;
+}
+
 .resume .resume-item::before, .resume .section-title::before {
   content: '';
-  height: 5rem;
-  min-width: 3rem;
+  height: 4rem;
+  min-width: 2rem;
   /* width: 3rem; */
   display: block;
   /* padding: 10px; */
@@ -79,7 +122,8 @@
 
 .section-title {
   border-bottom: 1px solid black;
-  margin-bottom: 2rem;
+  margin-bottom: 1.5rem;
+  padding-bottom: 1rem;
 }
 
 .resume-year {
@@ -94,8 +138,8 @@
 .resume-font {
   font-weight: 400;
   font-style: italic;
-  font-size: 14px !important;
-  line-height: 14px;
+  font-size: 13px !important;
+  line-height: 16px;
 }
 
 .resume-item-list {
@@ -148,17 +192,17 @@
 
 .resume-two-columns li {
   break-inside: avoid;
-  margin-bottom: 2rem;
-  margin-right: 2rem;
-}
-
-.resume-company {
-  font-size: 18px
+  margin-bottom: 1rem;
 }
 
 @media (max-width: 992px) {
+  .resume {
+    padding: 20px;
+  }
+
   .resume .section-title {
     flex-direction: column;
+    padding: 1rem;
   }
 
   .section-column:nth-child(3) {
@@ -173,8 +217,12 @@
     height: 0 !important;
   }
 
+  .resume-item-right-activity, .resume-item-right {
+    margin-bottom: 1.5rem;
+  }
+
   .resume .resume-item::before {
-    min-width: 2rem !important;
+    min-width: 1.5rem !important;
   }
 
   .resume .resume-two-columns {
