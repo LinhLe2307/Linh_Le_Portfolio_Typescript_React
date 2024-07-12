@@ -16,20 +16,20 @@ export const aboutMe = [
 
 export const workExLists = [
     {
-        year: "2022-2023",
+        year: '12/22 - 06/23',
         company: 'Siltatel Oy',
         position: 'Front-end Developer',
         image: siltatel
     }, 
     {
-        year: "2024-2024",
+        year: '01/24 - 03/24',
         company: 'Kassavirtanen Oy',
         position: 'Front-end Developer',
         image: kassavirtanen
 
     }, 
     {
-        year: "2024-2024",
+        year: '03/24 - 05/24',
         company: 'Druid Oy',
         position: 'Full-stack Developer',
         image: druid

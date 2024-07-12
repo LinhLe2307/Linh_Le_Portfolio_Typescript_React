@@ -42,7 +42,7 @@ i {
   font-size: 1.5rem;
 }
 
-button, input {
+button, input, a {
   font-family: "Raleway", sans-serif !important;
 }
 
@@ -53,8 +53,6 @@ button, input {
 }
 
 a {
-  /* color: #18d26e; */
-  /* color:#f0f2f5; */
   text-decoration: none;
 }
 

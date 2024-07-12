@@ -11,11 +11,20 @@ const Info = ({children}: { children: React.ReactNode }) => {
         <div className='info-item info-item-1'>
             <div className='fixed-item'>
                 <img src={avatar} />
-                <h2>Linh Le</h2>
-                <p>I am a passionate <span style={{ color: "white" }}><strong>full-stack web developer</strong></span> from Helsinki, Finland.
-                Graduated from  <span style={{ color: "white" }}><strong>Helsinki Business College</strong></span> as a driven 
-                full-stack web developer with hands-on experience at <span style={{ color: "white" }}><strong>Druid Oy</strong></span>, 
-                I am looking for a full-stack web developer position.
+                <div className='info-looking-job'>
+                    <h2>Linh Le</h2>
+                    <Link to='/resume' className='blink_me'>OPEN TO WORK</Link>
+                </div>
+                <p>I am a passionate <span className='highlight'>full-stack web developer</span> with <span className='highlight'>2 years </span> 
+                    of expertise in <span className='highlight'> TypeScript</span>, 
+                    <span className='highlight'> REST/GraphQL</span>,
+                    <span className='highlight'> ReactJs</span>, 
+                    <span className='highlight'> Redux</span>, 
+                    <span className='highlight'> PostgreSQL</span>, and 
+                    <span className='highlight'> NodeJs</span>, based in Helsinki, Finland. 
+                    At Druid Oy, I have demonstrated my ability to deliver 
+                    <span className='highlight'> user-friendly interfaces</span> and dedicated 
+                    <span className='highlight'> server-side solutions</span>.
                 </p>
                 <div className='info-download'>
                     <DownloadCV />

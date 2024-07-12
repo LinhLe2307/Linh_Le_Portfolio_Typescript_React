@@ -1,5 +1,5 @@
-import { useState } from "react";
-import { NavLink } from "react-router-dom";
+import { useState } from 'react';
+import { NavLink, Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 interface StyledDivProps {
@@ -13,9 +13,12 @@ const NavbarContainer = styled.nav<StyledDivProps>`
   padding: 1rem;
   background-color: #333;
   color: white;
-  font-family: "Raleway", sans-serif;
+  font-family: 'Raleway', sans-serif;
 
-  .menu {
+  .nav-logo a {
+    color: white
+  }
+  .nav-menu {
     display: flex;
     list-style: none;
 
@@ -49,15 +52,15 @@ const NavLinks = () => {
 
   return (
     <NavbarContainer open={menuOpen}>
-      <div className="logo">Linh Le</div>
-      <ul className="menu">
-        <li><NavLink className="nav-link active" to="/">Home</NavLink></li>
-             {/* <li><NavLink className="nav-link" to="/about">About</NavLink></li> */}         
-        <li><NavLink className="nav-link" to="/resume">Resume</NavLink></li>
-        <li><NavLink className="nav-link" to="/portfolio">Portfolio</NavLink></li>
-        <li><NavLink className="nav-link" to="/contact">Contact</NavLink></li>
+      <div className='nav-logo'><Link to='/'>Linh Le</Link></div>
+      <ul className='nav-menu'>
+        <li><NavLink className='nav-link active' to='/'>Home</NavLink></li>
+             {/* <li><NavLink className='nav-link' to='/about'>About</NavLink></li> */}         
+        <li><NavLink className='nav-link' to='/resume'>Resume</NavLink></li>
+        <li><NavLink className='nav-link' to='/portfolio'>Portfolio</NavLink></li>
+        <li><NavLink className='nav-link' to='/contact'>Contact</NavLink></li>
       </ul>
-      <div className="menu-toggle" onClick={() => setMenuOpen(!menuOpen)}>
+      <div className='menu-toggle' onClick={() => setMenuOpen(!menuOpen)}>
         &#9776;
       </div>
     </NavbarContainer>
