@@ -1,23 +1,18 @@
-import countries from "../assets/projects/countries/countries.png";
-import countries2 from "../assets/projects/countries/countries2.png";
-import countries3 from "../assets/projects/countries/countries3.png";
-import flashcard2 from "../assets/projects/flashcard/flashcard2.png";
-import flashcard3 from "../assets/projects/flashcard/flashcard3.png";
-import flashcard4 from "../assets/projects/flashcard/flashcard4.png";
-import speedgame from "../assets/projects/speedgame/speedgame.png";
-import speedgame2 from "../assets/projects/speedgame/speedgame2.png";
-import speedgame3 from "../assets/projects/speedgame/speedgame3.png";
-import speedgame4 from "../assets/projects/speedgame/speedgame4.png";
-import tasteIt from "../assets/projects/tasteit/tasteit.png";
-import tasteIt2 from "../assets/projects/tasteit/tasteit2.png";
-import tasteIt3 from "../assets/projects/tasteit/tasteit3.png";
-import { ObjectType } from "../pages/types/portfolioTypes";
+import countries from '../assets/projects/countries/countries.png';
+import countries2 from '../assets/projects/countries/countries2.png';
+import countries3 from '../assets/projects/countries/countries3.png';
+import flashcard2 from '../assets/projects/flashcard/flashcard2.png';
+import flashcard3 from '../assets/projects/flashcard/flashcard3.png';
+import flashcard4 from '../assets/projects/flashcard/flashcard4.png';
+import speedgame from '../assets/projects/speedgame/speedgame.png';
+import speedgame2 from '../assets/projects/speedgame/speedgame2.png';
+import speedgame3 from '../assets/projects/speedgame/speedgame3.png';
+import speedgame4 from '../assets/projects/speedgame/speedgame4.png';
+import tasteIt from '../assets/projects/tasteit/tasteit.png';
+import tasteIt2 from '../assets/projects/tasteit/tasteit2.png';
+import tasteIt3 from '../assets/projects/tasteit/tasteit3.png';
 
-interface ProjectDetailsProps {
-    [key: string]: ObjectType<string | string[]>
-}
-
-export const projectsDetails: ProjectDetailsProps = {
+export const projectsDetails = {
     790588458: {
         name: 'CardIO App',
         image: [flashcard2, flashcard3, flashcard4],

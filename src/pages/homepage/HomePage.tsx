@@ -65,30 +65,30 @@ const HomePage = () => {
 
     </div>
     <div className='info-item info-item-3'>
-            <div className="portfolio" >
-                <div className="container">
+            <div className='portfolio' >
+                <div className='container'>
                     <div className='portfolio-recent-projects'>
                         <h4>Recent Projects</h4>
-                        <Link to="portfolio" >View Projects</Link>
+                        <Link to='portfolio' >View Projects</Link>
                     </div>
                     <div className='portfolio-container'>
                         {
                             Object.values(projectsDetails).map(project => {
                                 if (project.type.indexOf('Ongoing') !== -1) {
                                     return (
-                                        <div className="portfolio-item filter-app" >
-                                            <div className="portfolio-wrap" style={{ borderRadius: "10px" }}>
-                                            <img src={flashcard2} className="img-fluid" alt="" 
-                                                style={{ objectFit: "contain", 
-                                                    borderRadius: "10px",
+                                        <div className='portfolio-item filter-app' key={project.name}>
+                                            <div className='portfolio-wrap' style={{ borderRadius: '10px' }}>
+                                            <img src={flashcard2} className='img-fluid' alt='' 
+                                                style={{ objectFit: 'contain', 
+                                                    borderRadius: '10px',
                                                 }}/>
-                                            <div className="portfolio-info">
+                                            <div className='portfolio-info'>
                                                 <h4>{project.name}</h4>
                                                 <p>ONGOING</p>
-                                                <div className="portfolio-links">
-                                                <Link to="https://flash-card-io.netlify.app/" className='portfolio-more-info' target='_blank'>
-                                                    <i className="bx bx-plus"></i>
-                                                    <div className="text">
+                                                <div className='portfolio-links'>
+                                                <Link to='https://flash-card-io.netlify.app/' className='portfolio-more-info' target='_blank'>
+                                                    <i className='bx bx-plus'></i>
+                                                    <div className='text'>
                                                     VIEW DEMO
                                                     </div>
                                                 </Link>

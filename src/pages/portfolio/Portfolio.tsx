@@ -20,16 +20,18 @@ const getAllProjects = async () => {
   }
 
   const filterList = results && results.filter((project: ObjectType<string>) => Object.keys(projectsDetails).find(detail => +detail === +project.id))
-  const newData = Object.entries(projectsDetails).reduce((obj: ObjectType<ObjectType<string>>, currValue) => {
+  const newData = Object.entries(projectsDetails).reduce((obj: ObjectType<ObjectType<string | string[]>>, currValue) => {
     const findProject = filterList && filterList.find((project: ObjectType<string>) => +project.id === +currValue[0])
       obj[currValue[0]] = {
         ...currValue[1],
-        homepage: findProject.homepage,
-        html_url: findProject.html_url,
-        topics: findProject.topics && findProject.topics.map((topic: string) => topic.charAt(0).toUpperCase() + topic.slice(1)),
-        description: findProject.description,
-        created_at: findProject.created_at.slice(0,10),
-        updated_at: findProject.updated_at.slice(0,10)
+        homepage: typeof findProject.homepage === 'string' ? findProject.homepage : '',
+        html_url: typeof findProject.html_url === 'string' ? findProject.html_url : '',
+        topics:  typeof findProject.topics === 'object' && Array.isArray(findProject.topics)
+          ? findProject.topics.map((topic: string) => topic.charAt(0).toUpperCase() + topic.slice(1))
+          : [''],
+        description: typeof findProject.description === 'string' ? findProject.description : '',
+        created_at: typeof findProject.created_at === 'string' ? findProject.created_at.slice(0,10) : '',
+        updated_at: typeof findProject.updated_at === 'string' ? findProject.updated_at.slice(0,10) : ''
       }
     return obj
   }, {})
@@ -94,7 +96,7 @@ const Portfolio = () => {
             {
               filteredData && filteredData.map((portfolio) => {
                 return (
-                  <div className="col-lg-12 col-md-12 portfolio-item filter-app" key={portfolio.name}>
+                  <div className="col-lg-12 col-md-12 portfolio-item filter-app" key={portfolio.name as React.Key}>
                     <div className="portfolio-wrap">
                       <img src={portfolio.name !== 'CardIO App' ? portfolio.image[0] : flashcard} className="img-fluid" alt=""/>
                       <div className="portfolio-info">
