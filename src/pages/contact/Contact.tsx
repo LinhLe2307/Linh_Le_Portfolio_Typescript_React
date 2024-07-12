@@ -20,11 +20,12 @@ const Contact = () => {
             setIsSuccessful(null)
           }, 2000)
 
-        }, () => {
+        }, (err) => {
           setIsSuccessful(false)
           setTimeout(() => {
             setIsSuccessful(null)
           }, 2000)
+          console.log(err)
         });
         e.target.reset()
     }
