@@ -31,7 +31,7 @@ const Resume = () => {
                 </div>
                 <div className='section-column section-media'>
                   <p>lemylinh237@gmail.com <span><i className='bi bi-envelope-fill' style={{ width: '3rem', height: '3rem' }}></i></span></p>
-                  <p>+358 46 966 4393 <span><i className='bi bi-phone-fill'></i></span></p>
+                  <p>+358 40 635 7668 <span><i className='bi bi-phone-fill'></i></span></p>
                   <p>Vantaa, Finland <span><i className='bi bi-geo-alt-fill'></i></span></p>
                   <p><Link to='https://linh-my-le.netlify.app/' style={{ color: 'black'}} target='_blank'>
                     linh-my-le.netlify.app/ </Link><span><i className='bi bi-link'></i></span>
