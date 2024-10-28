@@ -1,14 +1,21 @@
 import axios from "axios";
 import { useReducer } from "react"
 
-const getAllInputs = (state, action) => {
+interface getAllInputsProps<T> {
+    [key: string]: T
+}
+
+interface handleChangeProps<T> {
+    (e: T): void
+}
+
+const getAllInputs = (state: getAllInputsProps<string>, action: getAllInputsProps<string>) => {
     switch (action.type) {
         case "INPUT":
-            const newState = {...state}
+            const newState: getAllInputsProps<string> = {...state}
             newState[action.name] = action.value;
             return newState
     }
-
     return state
 }
 
@@ -17,7 +24,7 @@ const InputBlog = () => {
         description: ''
     })
 
-    const handleSubmit = async (e) => {
+    const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         try {
             const response = await axios.post("http://localhost:5001/blog", {
@@ -32,7 +39,7 @@ const InputBlog = () => {
         }
     }
     
-    const handleChange = (e) => {
+    const handleChange: handleChangeProps<React.ChangeEvent<HTMLInputElement>> = (e) => {
         dispatch({
             type: "INPUT",
             name: e.target.name,
@@ -42,8 +49,8 @@ const InputBlog = () => {
 
   return (
     <div>
-        <form onSubmit={handleSubmit} onChange={handleChange}>
-            <input id="description" name="description" />
+        <form onSubmit={handleSubmit}>
+            <input id="description" name="description" onChange={handleChange}/>
             <button type="submit">Submit</button>
         </form>
     </div>

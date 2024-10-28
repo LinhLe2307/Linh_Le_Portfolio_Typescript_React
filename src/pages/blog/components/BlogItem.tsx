@@ -2,14 +2,18 @@ import { useQuery } from "@tanstack/react-query"
 import axios from "axios"
 import { useEffect } from "react"
 
+interface BlogItemProps {
+    description: string
+}
+
 const getAllBlogs = async () => {
-    let response
+    let response 
     try {
         response = await axios.get("http://localhost:5001/blogs")
+        return response.data
     } catch(err) {
         console.error(err)
     }
-    return response.data
 }
 const BlogItem = () => {
     const {data } = useQuery({
@@ -23,7 +27,7 @@ const BlogItem = () => {
   return (
     <div>
         <ul>
-            {data && data.map(blog => <li>{blog.description}</li>)}
+            {data && data.map((blog: BlogItemProps) => <li>{blog.description}</li>)}
         </ul>
     </div>
   )
