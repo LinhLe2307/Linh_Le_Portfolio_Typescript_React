@@ -58,6 +58,7 @@ const NavLinks = () => {
              {/* <li><NavLink className='nav-link' to='/about'>About</NavLink></li> */}         
         <li><NavLink className='nav-link' to='/resume'>Resume</NavLink></li>
         <li><NavLink className='nav-link' to='/portfolio'>Portfolio</NavLink></li>
+        {/* <li><NavLink className='nav-link' to='/blogs'>Blogs</NavLink></li> */}
         <li><NavLink className='nav-link' to='/contact'>Contact</NavLink></li>
       </ul>
       <div className='menu-toggle' onClick={() => setMenuOpen(!menuOpen)}>

@@ -11,6 +11,7 @@ import PortfolioDetails from './pages/portfolioDetails/PortfolioDetails';
 import Resume from './pages/resume/Resume';
 import MainPage from './shared/components/MainPage/MainPage';
 import MainNavigation from './shared/components/Navigation/MainNavigation';
+// import Blog from './pages/blog/Blog';
 
 function App() {
   const client = new QueryClient()
@@ -24,6 +25,7 @@ function App() {
             <Route path="/" element={<MainPage />}>
               <Route index element={<HomePage />}/>
               <Route path="/resume" element={<Resume />}/>
+              {/* <Route path="/blogs" element={<Blog />}/> */}
               <Route path="/portfolio" element={<Portfolio />}/>
               <Route path="/portfolio/:name" element={<PortfolioDetails />}/>
               <Route path="/contact" element={<Contact />}/>
